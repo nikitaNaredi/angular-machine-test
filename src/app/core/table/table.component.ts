@@ -10,6 +10,7 @@ import { IEmployees } from 'src/app/models/IEmployees';
 export class TableComponent implements OnInit{
     employees: IEmployees;
     employeesFilter: IEmployees;
+    myFilter: string;
     tableHeaders = [
         {
             label: 'Id',
@@ -50,12 +51,22 @@ export class TableComponent implements OnInit{
 
     constructor(private employeesService: EmployeesService) {  }
 
-    ngOnInit(){
+    ngOnInit() {
         this.employees = this.employeesService.getEmployees();
-        this.employeesFilter = this.employees;
+        this.employeesFilter = {...this.employees};
     }
 
-    updateOrderBy(index) {
+    filterTable() {
+        this.employeesFilter.data = this.employees.data.filter((value) => {
+            if (value.name.toLowerCase().includes(this.myFilter.toLowerCase()) ||
+            value.address.city.toLowerCase().includes(this.myFilter.toLowerCase())) {
+                return true;
+            }
+            return false;
+        });
+    }
+
+    updateOrderBy(index: number) {
         if (this.tableHeaders[index].order === 0) {
           for (let i in this.tableHeaders) {
             this.tableHeaders[i].order = 2;

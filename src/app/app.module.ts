@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { TableComponent } from './core/table/table.component';
@@ -17,7 +18,8 @@ import { NumberTypeCheckPipe } from './shared/pipes/number-type-check.pipe';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [
     EmployeesService

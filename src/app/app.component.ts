@@ -9,7 +9,7 @@ import { dummyEmployees } from '../assets/dummy-employees';
 export class AppComponent implements OnInit {
   title = 'angular-machine-test';
   dummyEmployeesData = dummyEmployees();
-  
+
   ngOnInit() {
     console.log(this.dummyEmployeesData);
   }
