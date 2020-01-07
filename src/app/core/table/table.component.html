@@ -1,0 +1,37 @@
+<div class="container">
+    <div class="table-filter-wrapper">
+        <!-- <div class="filter-wrapper">
+            <input 
+            class="filter-input" 
+            type="text" 
+            placeholder="Filter" 
+            [(ngModel)]="myFilter" 
+            (input) = updateTable()/>
+        </div> -->
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th *ngFor="let header of tableHeaders, let i = index" 
+                        (click) = "sort(header.name, header.order)" 
+                        (click)="updateOrderBy(i)"><span>{{header.label}}</span>
+                            <i class="material-icons" >{{icon[header.order]}}</i>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody >
+                    <tr *ngFor="let employee of employeesFilter.data" > 
+                        <td>{{employee.id}}</td>
+                        <td>{{employee.name}}</td>
+                        <td>{{employee.phone | numberTypeCheck}}</td>
+                        <td>{{employee.address.city}}</td>
+                        <td>{{employee.address.address_line1}}</td>
+                        <td>{{employee.address.address_line2}}</td>
+                        <td>{{employee.address.postal_code}}</td>
+                    </tr>
+                    <!-- *ngFor="let rowItem of tableFilter | slice: (this.currentPage*10):(this.currentPage*10+10)" -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
