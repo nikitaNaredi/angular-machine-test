@@ -7,7 +7,7 @@ import { FormModalComponent } from './shared/components/form-modal/form-modal.co
 const routes: Routes = [
     {
         path: 'employees/add',
-        component: TableComponent
+        component: FormModalComponent
     },
     {
         path: 'employees/:id/edit',
