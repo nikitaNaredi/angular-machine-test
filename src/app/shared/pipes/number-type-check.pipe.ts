@@ -1,10 +1,10 @@
-import { Pipe, PipeTransform } from "@angular/core";
+import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
     name: 'numberTypeCheck'
 })
-export class NumberTypeCheckPipe implements PipeTransform{
+export class NumberTypeCheckPipe implements PipeTransform {
     transform(value: string) {
-        return (!isNaN(+value)) ? value: 'NA';
+        return (!isNaN(+value)) ? value : 'NA';
     }
 }

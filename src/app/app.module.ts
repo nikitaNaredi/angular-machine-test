@@ -1,10 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { TableComponent } from './core/table/table.component';
-import { FormModalComponent } from './shared/components/form-modal/form-modal.component';
+import { FormComponent } from './shared/components/form/form.component';
 import { AppRoutingModule } from './app-routing.module';
 import { EmployeesService } from './shared/services/employees.service';
 import { NumberTypeCheckPipe } from './shared/pipes/number-type-check.pipe';
@@ -13,13 +13,14 @@ import { NumberTypeCheckPipe } from './shared/pipes/number-type-check.pipe';
   declarations: [
     AppComponent,
     TableComponent,
-    FormModalComponent,
+    FormComponent,
     NumberTypeCheckPipe
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [
     EmployeesService

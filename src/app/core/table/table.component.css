@@ -14,7 +14,7 @@
     outline: none;
     border-bottom: 1px solid rgba(0, 0, 0, .42);
     background-color: #fafafa;
-    padding-bottom: 3px;
+    padding: 6px 3px;
     transition: .05s box-shadow ease;
 }
 .filter-input:focus {

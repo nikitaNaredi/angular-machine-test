@@ -1,13 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { EmployeesService } from 'src/app/shared/services/employees.service';
 import { IEmployees } from 'src/app/models/IEmployees';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-table',
     templateUrl: './table.component.html',
     styleUrls: ['./table.component.css']
 })
-export class TableComponent implements OnInit{
+export class TableComponent implements OnInit {
     employees: IEmployees;
     employeesFilter: IEmployees;
     myFilter: string;
@@ -49,7 +50,10 @@ export class TableComponent implements OnInit{
         }];
     icon = ['arrow_upward', 'arrow_downward', ''];
 
-    constructor(private employeesService: EmployeesService) {  }
+    constructor(
+        private employeesService: EmployeesService,
+        private router: Router,
+        ) {  }
 
     ngOnInit() {
         this.employees = this.employeesService.getEmployees();
@@ -58,8 +62,8 @@ export class TableComponent implements OnInit{
 
     filterTable() {
         this.employeesFilter.data = this.employees.data.filter((value) => {
-            if (value.name.toLowerCase().includes(this.myFilter.toLowerCase()) ||
-            value.address.city.toLowerCase().includes(this.myFilter.toLowerCase())) {
+            if ( value.name && value.name.toLowerCase().includes(this.myFilter.toLowerCase()) ||
+             value.address.city && value.address.city.toLowerCase().includes(this.myFilter.toLowerCase())) {
                 return true;
             }
             return false;
@@ -68,12 +72,14 @@ export class TableComponent implements OnInit{
 
     updateOrderBy(index: number) {
         if (this.tableHeaders[index].order === 0) {
-          for (let i in this.tableHeaders) {
+          // tslint:disable-next-line: forin
+          for (const i in this.tableHeaders) {
             this.tableHeaders[i].order = 2;
           }
           this.tableHeaders[index].order = 1;
         } else {
-          for (let i in this.tableHeaders) {
+          // tslint:disable-next-line: forin
+          for (const i in this.tableHeaders) {
             this.tableHeaders[i].order = 2;
           }
           this.tableHeaders[index].order = 0;
@@ -89,8 +95,8 @@ export class TableComponent implements OnInit{
             sortBy === 'address_line2' ||
             sortBy === 'city' ||
             sortBy === 'postal_code') {
-                first = (a['address'][sortBy]);
-                second = (b['address'][sortBy]);
+                first = (a.address[sortBy]);
+                second = (b.address[sortBy]);
             } else {
                 first = a[sortBy];
                 second = b[sortBy];
@@ -104,5 +110,14 @@ export class TableComponent implements OnInit{
             }
             return val;
         });
+    }
+
+    onAdd() {
+        this.router.navigate(['employees', 'add']);
+    }
+
+    onEdit(id: number) {
+        const queryString = '/employees/' + id + '/edit';
+        this.router.navigateByUrl(queryString);
     }
 }

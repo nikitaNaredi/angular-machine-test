@@ -1,1 +1,30 @@
 /* You can add global styles to this file, and also import other style files */
+*{
+    font-family: Arial, Helvetica, sans-serif;
+}
+.button {
+    padding: 8px 17px;
+    border: none;
+    border-radius: 3px;
+    transition: ease-out .1s;
+    outline: none;
+}
+.button:hover {
+    cursor: pointer;
+    background-color: #dddddd;
+}
+.button-primary {
+    background-color: rgb(70, 70, 206);
+    color: white;
+    transition: ease-out .1s;
+}
+.button-primary:hover {
+    background-color: rgb(80, 80, 226);
+    color: white;
+}
+
+input {
+    padding: 0px 6px 4px 6px;
+    border: none;
+    border-bottom: 1px solid #ababab;
+}
