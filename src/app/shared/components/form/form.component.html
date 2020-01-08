@@ -1,0 +1,48 @@
+<div class="modal container">
+    <form class="form" [formGroup]="employeeForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+            <label for="id">Id</label>
+            <input type="number" formControlName="id">
+        </div>
+        <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" formControlName="name">
+        </div>
+        <div class="form-group">
+            <label for="phone">Phone</label>
+            <input type="number" formControlName="phone">
+        </div>
+        <div formGroupName="address">
+            <div class="form-group">
+                <label for="city">City</label>
+                <input type="text" formControlName="city">
+            </div>
+            <div class="form-group">
+                <label for="address_line1">Address1</label>
+                <input type="text" formControlName="address_line1">
+            </div>
+            <div class="form-group">
+                <label for="address_line2">Address2</label>
+                <input type="text" formControlName="address_line2">
+            </div>
+            <div class="form-group">
+                <label for="postal_code">Postal Code</label>
+                <input type="text" formControlName="postal_code">
+            </div>
+        </div>
+        <div class="form-group">
+            <button 
+            class="button button-primary"
+            type="submit"
+            [disabled]="!employeeForm.valid">{{(isEditable) ? 'Save' : 'Add'}}</button>
+            <button
+            class="button button-default"
+            type="button"
+            (click)="onBack()">
+                Back
+            </button
+
+            >
+        </div>
+    </form>
+</div>
